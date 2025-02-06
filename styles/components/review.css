@@ -1,0 +1,123 @@
+.review__subtitle {
+    font-size: var(--size-sm);
+    color: var(--clr-teal600);
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.review__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review__title {
+    font-size: var(--size-2xl);
+    color: var(--clr-light);
+    text-transform: uppercase;
+}
+
+.review__link {
+    width: var(--size-2xl);
+    height: var(--size-2xl);
+}
+
+.review__description {
+    max-width: 37ch;
+    color: var(--clr-slate600);
+    font-size: var(--size-sm);
+    margin: 1rem 0;
+}
+
+.review__child {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 1.5rem;
+}
+
+/* xs */
+@media (min-width: 475px) {
+    .review__subtitle {
+        font-size: var(--size-base);
+    }
+
+    .review__title {
+        font-size: var(--size-3xl);
+    }
+
+    .review__link {
+        width: var(--size-3xl);
+        height: var(--size-3xl);
+    }
+
+    .review__description {
+        max-width: 60ch;
+        font-size: var(--size-base);
+        margin: 1.5rem 0;
+    }
+
+}
+
+/* sm */
+@media (min-width: 640px) {
+    .review__description {
+        max-width: 30ch;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .review__description {
+        max-width: 35ch;
+    }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+    .review__subtitle {
+        font-size: var(--size-lg);
+    }
+
+    .review__title {
+        font-size: var(--size-4xl);
+    }
+
+    .review__link {
+        width: var(--size-4xl);
+        height: var(--size-4xl);
+    }
+
+    .review__description {
+        max-width: 45ch;
+        font-size: var(--size-lg);
+    }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+    .review__subtitle {
+        font-size: var(--size-xl);
+    }
+
+    .review__title {
+        font-size: var(--size-5xl);
+    }
+
+    .review__link {
+        width: var(--size-5xl);
+        height: var(--size-5xl);
+    }
+
+    .review__description {
+        max-width: 50ch;
+        font-size: var(--size-xl);
+        margin: 2rem 0;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .review__description {
+        max-width: 60ch;
+    }
+}

@@ -1,24 +1,19 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import '../styles/modern.normalize.css';
+import '../styles/style.css';
+import '../styles/components/header.css';
+import '../styles/components/headshot.css';
+import '../styles/components/about.css';
+import '../styles/components/review.css';
+import '../styles/components/honors.css';
+import '../styles/components/contact.css';
+import '../styles/components/footer.css';
+import '../styles/components/mobile-nav.css';
+import '../styles/utils.css';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import mobileNav from './utils/mobile-nav';
+import darkMode from './utils/dark-mode';
+import lazyLoading from './utils/lazy-loading';
 
-setupCounter(document.querySelector('#counter'))
+mobileNav();
+darkMode();
+lazyLoading();
