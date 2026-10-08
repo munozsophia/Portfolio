@@ -1,55 +1,73 @@
 :root {
-    --clr-dark: #030e0c;
-    --clr-light: #f1f5f9;
-    --clr-slate400: #94a3b8;
-    --clr-slate600: #475569;
-    --clr-slate800: #1e293b;
-    --clr-teal200: #99f6e4;
-    --clr-teal600: #0d9488;
+    /* colors */
+    --bg: #050b0a;
+    --surface: #0c1514;
+    --border: rgba(153, 246, 228, 0.12);
+    --text: #e6f1ef;
+    --text-muted: #94a3b8;
+    --accent: #5eead4;
+    --accent-strong: #14b8a6;
+    --accent-glow: rgba(94, 234, 212, 0.14);
+    --on-accent: #042f2e;
 
-    /* teal200 rgb(153, 246, 228) */
-    /* teal600 rgb(13, 148, 136) */
+    /* fluid type: scales with the screen, no media queries needed */
+    --fs-sm: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+    --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --fs-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+    --fs-h2: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+    --fs-hero: clamp(2.75rem, 1.5rem + 6vw, 6.5rem);
 
-    /* sizes */
-    --size-xxs: 0.5rem;
-    --size-xs: 0.75rem;
-    --size-sm: 0.875rem;
-    --size-base: 1rem;
-    --size-lg: 1.125rem;
-    --size-xl: 1.25rem;
-    --size-2xl: 1.5rem;
-    --size-3xl: 1.875rem;
-    --size-4xl: 2.25rem;
-    --size-5xl: 3rem;
-    --size-6xl: 3.75rem;
-    --size-7xl: 4.5rem;
-    --size-8xl: 6rem;
-    --size-9xl: 8rem;
-    --size-10xl: 10rem;
+    --radius: 14px;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.light-mode {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: rgba(15, 118, 110, 0.18);
+    --text: #0f172a;
+    --text-muted: #475569;
+    --accent: #0f766e;
+    --accent-strong: #0d9488;
+    --accent-glow: rgba(13, 148, 136, 0.10);
+    --on-accent: #ffffff;
 }
 
 * {
     margin: 0;
-    line-height: calc(1em + 0.5rem);
 }
 
-/*Makes scrolling through different sections a transition*/
+/* Makes scrolling through different sections a transition */
 html {
     scroll-behavior: smooth;
-}
-
-.light-mode {
-    --clr-light: #030e0c;
-    --clr-dark: #f1f5f9;
-    --clr-slate400: #94a3b8;
-    --clr-slate600: #475569;
-    --clr-slate800: #1e293b;
+    scroll-padding-top: 5rem; /* so the sticky header doesn't cover section titles */
 }
 
 body {
     font-family: 'General Sans', sans-serif;
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
+    font-size: var(--fs-base);
+    line-height: 1.65;
+    color: var(--text);
+    background:
+        radial-gradient(60rem 40rem at 85% -10%, var(--accent-glow), transparent 60%),
+        radial-gradient(40rem 30rem at -10% 35%, var(--accent-glow), transparent 60%),
+        var(--bg);
+    background-attachment: fixed;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3 {
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.section h2 {
+    font-size: var(--fs-h2);
+}
+
+p {
+    color: var(--text-muted);
 }
 
 img,
@@ -68,28 +86,46 @@ button {
     border: none;
     background: none;
     cursor: pointer;
-    /*inherits the color of its parent*/
     color: inherit;
 }
 
 a {
-    color: var(--clr-teal200);
+    color: var(--accent);
 }
 
 strong {
-    color: var(--clr-teal600)
+    color: var(--accent-strong);
+    font-weight: 600;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+/* small mono label above each section title, e.g. "// about" */
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+.eyebrow::before {
+    content: '// ';
+    opacity: 0.6;
 }
 
 /* Scrollbar */
 body::-webkit-scrollbar {
     width: 8px;
-  }
-   
-  body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
-  }
-   
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--clr-teal200);
-    outline: 1px solid var(--clr-teal200);
-  }
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 999px;
+}

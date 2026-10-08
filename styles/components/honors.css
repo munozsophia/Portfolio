@@ -2,240 +2,86 @@
     text-align: center;
 }
 
-.honors__title {
-    font-size: var(--size-2xl);
-    color: var(--clr-light);
-}
-
 .honors__description {
     max-width: 60ch;
-    font-size: var(--size-sm);
-    color: var(--clr-slate600);
-    margin: 1rem auto;
+    margin: 1.25rem auto 0;
 }
 
-.honors__project-title {
-    font-size: var(--size-base);
-    margin-bottom: 1rem;
+.honors__container {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
-.honors__img-wrapper {
-    position: relative;
+.card {
+    display: grid;
+    overflow: hidden;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
 }
 
-.honors__img-wrapper::after {
-    content: '';
-    background-color: rgba(13, 148, 136, 0.4);
+/* .card.reveal so this wins over the .reveal transition in utils.css */
+.card,
+.card.reveal {
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.7s, translate 0.7s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    box-shadow: 0 24px 60px -24px var(--accent);
+}
+
+.card__media {
+    overflow: hidden;
+}
+
+.card__media img {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transition: background-color 0.3s;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: scale 0.5s, filter 0.7s ease-in-out;
 }
 
-.honors__experience:not(:last-child) {
-    margin-bottom: 5rem;
+.card:hover .card__media img {
+    scale: 1.05;
 }
 
-.honors__project-description1 {
-    font-size: var(--size-sm);
-    color: var(--clr-slate600);
-    margin: 1rem 0;
+.card__body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.honors__project-description2 {
-    font-size: var(--size-sm);
-    color: var(--clr-slate400);
-    margin-bottom: 1rem;
+.card__title {
+    font-size: var(--fs-lg);
 }
 
-.honors__img-wrapper:hover::after {
-    background-color: rgba(13, 148, 136, 0.3);
+.card__btn {
+    align-self: flex-start;
+    margin-top: auto;
 }
 
-.honors__project-btn {
-    font-size: var(--size-sm);
-}
-
-.honors__project-subtitle {
-    display: none;
-}
-
-/* xs */
-@media (min-width: 475px) {
-    .honors__title {
-        font-size: var(--size-3xl);
-    }
-    
-    .honors__description {
-        font-size: var(--size-base);
-        margin: 1.5rem auto;
-    }
-
-    .honors__project-title {
-        font-size: var(--size-lg);
-        margin-bottom: 1.5rem;
-    }
-
-    .honors__project-description1 {
-        font-size: var(--size-base);
-        margin: 1.5rem 0;
-    }
-    
-    .honors__project-description2 {
-        font-size: var(--size-base);
-        margin-bottom: 1.5rem;
-    }
-
-    .honors__project-btn {
-        font-size: var(--size-base);
-    }
-}
-
-/* sm */
-@media (min-width: 640px) {
-    .honors__container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-            'image1 content1'
-            'content2 image2';
-        place-items: center;
-    }
-
-    .honors__image1 {
-        grid-area: image1;
-    }
-
-    .honors__image2 {
-        grid-area: image2;
-    }
-
-    .honors__content1 {
-        grid-area: content1;
-    }
-
-    .honors__content2 {
-        grid-area: content2;
-    }
-
-    .honors__project {
-        padding: 0 1rem;
-    }
-
-    .honors__project-title {
-        display: none;
-    }
-
-    .honors__project-description1 {
-        font-size: var(--size-xs);
-        margin: 1em 1em;
-    }
-    
-    .honors__project-description2 {
-        font-size: var(--size-xs);
-        margin: 0 1em;
-        margin-bottom: 1em;
-    }
-
-    .honors__project-btn {
-        font-size: var(--size-xs);
-    }
-
-    .honors__experience:not(:last-child) {
-        margin-bottom: 0;
-    }
-
-    .honors__project-subtitle {
-        display: block;
-        font-size: var(--size-base);
-    }
-}
-
-/* md */
 @media (min-width: 768px) {
-    .honors__project-description1 {
-        font-size: var(--size-xs);
-    }
-    
-    .honors__project-description2 {
-        font-size: var(--size-xs);
+    .card {
+        grid-template-columns: 2fr 3fr;
     }
 
-    .honors__project-btn {
-        font-size: var(--size-xs);
+    .card:nth-child(even) {
+        grid-template-columns: 3fr 2fr;
     }
 
-    .honors__project-subtitle {
-        font-size: var(--size-lg);
-    }
-}
-
-/* lg */
-@media (min-width: 1024px) {
-    .honors__title {
-        font-size: var(--size-4xl);
-    }
-    
-    .honors__description {
-        font-size: var(--size-lg);
+    .card__media img {
+        aspect-ratio: auto;
+        min-height: 100%;
     }
 
-    .honors__project-description1 {
-        font-size: var(--size-base);
-    }
-    
-    .honors__project-description2 {
-        font-size: var(--size-base);
-    }
-
-    .honors__project-btn {
-        font-size: var(--size-base);
-    }
-
-    .honors__project-subtitle {
-        font-size: var(--size-xl);
-    }
-}
-
-/* xl */
-@media (min-width: 1280px) {
-    .honors__title {
-        font-size: var(--size-5xl);
-    }
-    
-    .honors__description {
-        font-size: var(--size-xl);
-        margin: 2rem auto;
-    }
-
-    .honors__project-description1 {
-        font-size: var(--size-lg);
-    }
-    
-    .honors__project-description2 {
-        font-size: var(--size-lg);
-    }
-
-    .honors__project-btn {
-        font-size: var(--size-lg);
-    }
-
-    .honors__project-subtitle {
-        font-size: var(--size-2xl);
-    }
-
-    .honors__container {
-        width: 80%;
-        margin: 0 auto;
-    }
-}
-
-/* 2xl */
-@media (min-width: 1536px) {
-    .honors__container {
-        width: 70%;
+    /* zigzag: image on the right for every other card */
+    .card:nth-child(even) .card__media {
+        order: 2;
     }
 }

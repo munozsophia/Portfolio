@@ -1,5 +1,5 @@
 const darkMode = () => {
-    const themeToggleBtns = document.querySelectorAll('#theme-toggle');
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle');
 
     // State
     const theme = localStorage.getItem('theme');
